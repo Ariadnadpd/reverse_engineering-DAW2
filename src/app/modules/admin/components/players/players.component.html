@@ -1,0 +1,48 @@
+<div class="mt-4" style="display: flex; justify-content: center; align-items: center;">
+    <h2>Plantilla de jugadores del Sevilla FC</h2>
+    <a class="btn btn-primary mx-4" routerLink="../add-player">Agregar nuevo jugador</a>
+</div>
+
+<div class="container pt-5 pb-5"> 
+<div class="row">
+    <div class="col-sm-4" *ngFor="let items of playersList; let i = index">
+      <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title px-4">{{ items.name }} {{ items.surname }}</h4>
+            <h5 class="card-subtitle px-4 my-3">Detalles del jugador</h5>
+            <div class="mt-2 mb-2 px-4">
+                <p class="card-text"><strong>Número:</strong> {{items.number}}</p>
+                <p class="card-text"><strong>Nacionalidad:</strong> {{ items.nationality }}</p>
+                <p class="card-text"><strong>Edad:</strong> {{ items.age }}</p>
+                <p class="card-text"><strong>Altura:</strong> {{ items.height }}</p>
+                <p class="card-text"><strong>Posición:</strong> {{ items.position }}</p>
+            </div>
+            <div class="px-5 mt-3" style="display: flex; justify-content: center; align-items: center;">
+                <button class="btn btn-primary mx-4" routerLink="../edit-player/{{i}}">Editar</button>
+                <button class="btn btn-danger" (click)="triggerModal(modalData, items.name, i)">Eliminar</button>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #modalData let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Mensaje de confirmación</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p><strong>¿Estás seguro que quieres eliminar los datos del jugador <span class="text-primary">"{{playerDelete}}"</span>?</strong></p>
+    
+    <p>Todos los datos relacionados con el jugador {{playerDelete}} se eliminarán de forma permanente.</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="modal.close('Ok click')">Aceptar</button>
+    <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Cerrar</button>
+  </div>
+</ng-template>

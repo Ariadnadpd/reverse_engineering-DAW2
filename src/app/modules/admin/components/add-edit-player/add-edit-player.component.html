@@ -1,0 +1,83 @@
+<div class="container vh-50 mt-4 mb-4 w-75">
+    <div class="row justify-content-center h-100">
+        <div class="card my-auto shadow">
+            <h3 class="mt-4 text-center">Formulario para {{action}} los datos personales del jugador</h3>
+            <div class="card-body px-5">
+                <form [formGroup]="detailsPlayerForm">
+                  
+                    <div class="form-group mb-3">
+                        <label for="input-name" >Nombre</label>
+                        <input type="text" class="form-control" id="input-name" 
+                        placeholder="Ejemplo: Roberto" formControlName="name" required>
+                        <mat-error *ngIf="detailsPlayerForm.controls['name'].hasError('required') && detailsPlayerForm.controls['name'].touched">Este campo es <strong>obligatorio</strong>.</mat-error>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="input-surname">Apellidos</label>
+                        <input type="text" class="form-control" id="input-surname" 
+                            placeholder="Ejemplo: Díaz" formControlName="surname" required>
+                        <mat-error *ngIf="detailsPlayerForm.controls['surname'].hasError('required') && detailsPlayerForm.controls['surname'].touched">Este campo es <strong>obligatorio</strong>.</mat-error>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="input-number">Número</label>
+                        <input type="number" class="form-control" id="input-number" 
+                            placeholder="Ejemplo: 13" formControlName="number" required>
+                        <mat-error *ngIf="detailsPlayerForm.controls['number'].hasError('required') && detailsPlayerForm.controls['number'].touched">Este campo es <strong>obligatorio</strong>.</mat-error>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="input-nationality">Nacionalidad</label>
+                        <input type="text" class="form-control" id="input-nationality" 
+                            placeholder="Ejemplo: España" formControlName="nationality" required>
+                        <mat-error *ngIf="detailsPlayerForm.controls['nationality'].hasError('required') && detailsPlayerForm.controls['nationality'].touched">Este campo es <strong>obligatorio</strong>.</mat-error>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="input-age">Edad</label>
+                        <input type="number" class="form-control" id="input-age" 
+                            placeholder="Ejemplo: 24" formControlName="age" required>
+                        <mat-error *ngIf="detailsPlayerForm.controls['age'].hasError('required') && detailsPlayerForm.controls['age'].touched">Este campo es <strong>obligatorio</strong>.</mat-error>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="input-height">Altura</label>
+                        <input type="number" class="form-control" id="input-height" 
+                            placeholder="Ejemplo: 1.84" formControlName="height" required>
+                        <mat-error *ngIf="detailsPlayerForm.controls['height'].hasError('required') && detailsPlayerForm.controls['height'].touched">Este campo es <strong>obligatorio</strong>.</mat-error>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="select-position">Posición</label>
+                        <select class="custom-select custom-select-lg" class="form-control" 
+                        id="select-position" placeholder="Posición" formControlName="position">
+                            <option value="" selected disabled>Selecciona una posición</option>
+                            <option *ngFor="let position of positionList" value={{position}} required>{{position}}</option>
+                        </select>
+                        <mat-error *ngIf="detailsPlayerForm.controls['position'].hasError('required') && detailsPlayerForm.controls['position'].touched">Este campo es <strong>obligatorio</strong>.</mat-error>
+                    </div>
+                  
+                    <div class="form-group mb-3" style="display: flex; justify-content: center;">
+                        <input type="submit" class="btn btn-primary" value="Aceptar" (click)="triggerModal(modalData)">
+                        <button class="button-cancel btn btn-danger " routerLink="../players">Cancelar</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #modalData let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">¡Felicidades!</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p><strong>El jugador se ha <span class="text-primary">{{actionDialog}}</span> con éxito.</strong></p>
+      
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="modal.close('Ok click')">Aceptar</button>
+    </div>
+  </ng-template>
