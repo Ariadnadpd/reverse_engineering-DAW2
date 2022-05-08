@@ -17,7 +17,7 @@ El formulario que se ha realizado para crear y editar los jugadores contiene dif
 1. Tener instalado [Node.js y npm](https://nodejs.org/es/).
 2. Tener instalada la `versión 13.2.6` del CLI Angular.
 3. Tener instalado un navegador, preferiblemente el de `Google Chroome`.
-4. Tener instalado los paquetes necesarios para Angular Material y Bootstrap.
+4. Tener instalado los paquetes necesarios para `Angular Material` y `Bootstrap`.
 
 ## Cómo ejecutar el proyecto
 
